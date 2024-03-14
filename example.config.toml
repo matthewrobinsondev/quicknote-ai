@@ -1,0 +1,4 @@
+openai_api_key = ""
+# home directory is already included & / for file creation is too
+# for example a valid directory would be "Documents/obsidian"
+notes_directory = ""
