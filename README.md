@@ -1,5 +1,5 @@
 # What is quick note ai?
-Well quick note ai is for all the termites out there who refuse to leave there terminals even for a quick second!
+Quick note ai is for all the termites out there who refuse to leave there terminals even for a quick second!
 
 It's for when you are trying to create a quick note on a thought that has popped into your head without leaving your state of flow. I consistently think of these things each day but either choose to stay in my state of flow or to exit that flow and write down my thought. However I then run into the issue of taking too long on the note or never coming back to finishing the note.
 

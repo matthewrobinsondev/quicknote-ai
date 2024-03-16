@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/matthewrobinsondev/quicknote-ai/pkg/ai"
 	"github.com/matthewrobinsondev/quicknote-ai/pkg/markdown"
@@ -37,29 +36,6 @@ var noteCmd = &cobra.Command{
 }
 
 func init() {
-	configDir, err := os.UserConfigDir()
-
-	if err != nil {
-		fmt.Println("Error getting config directory:", err)
-		return
-	}
-
-	viper.SetConfigName("config")
-	viper.SetConfigType("toml")
-	viper.AddConfigPath(fmt.Sprintf("%s/quicknote-ai", configDir))
-
-	err = viper.ReadInConfig()
-
-	if err != nil {
-		fmt.Println("Errored reading config:", err)
-		return
-	}
-
-	if !viper.IsSet("openai_api_key") {
-		fmt.Println("Please add your openai_api_key to the config")
-		return
-	}
-
 	aiService = ai.NewOpenAIService(viper.GetString("openai_api_key"))
 
 	noteCmd.Flags().StringVarP(&thought, "thought", "t", "", "No thoughts wise guy?")
