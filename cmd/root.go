@@ -4,11 +4,9 @@ Copyright © 2024 Matthew Robinson <matthewrobinsondev@gmail.com>
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 var rootCmd = &cobra.Command{
@@ -31,26 +29,5 @@ func Execute() {
 }
 
 func init() {
-	configDir, err := os.UserConfigDir()
-
-	if err != nil {
-		fmt.Println("Error getting config directory:", err)
-		return
-	}
-
-	viper.SetConfigName("config")
-	viper.SetConfigType("toml")
-	viper.AddConfigPath(fmt.Sprintf("%s/quicknote-ai", configDir))
-
-	err = viper.ReadInConfig()
-
-	if err != nil {
-		fmt.Println("Errored reading config:", err)
-		return
-	}
-
-	if !viper.IsSet("openai_api_key") {
-		fmt.Println("Please add your openai_api_key to the config")
-		return
-	}
+	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
