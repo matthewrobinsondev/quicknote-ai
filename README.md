@@ -37,3 +37,5 @@ for example
 *Currently only one type of note is accepted. I'm currently looking at adding both a flag for open ai model & note templae. However in the current version they are both hard coded.*
 
 `quicknote-ai note -t "Your quick note prompt"`
+
+![](https://github.com/matthewrobinsondev/quicknote-ai/blob/master/example-usage.gif)
