@@ -90,7 +90,6 @@ func createRequest(payloadBytes []byte, apiKey string) (*http.Request, error) {
 
 	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", apiKey))
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Cookie", "_cfuvid=elty586jj7C6zJMJc3.VutL5485D5Hp0MrXATJTdQnA-1710453530048-0.0.1.1-604800000")
 
 	return req, nil
 }
