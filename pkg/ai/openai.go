@@ -8,8 +8,13 @@ import (
 	"net/http"
 )
 
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
 type OpenAIService struct {
 	APIKey string
+	Client HTTPClient
 }
 
 type APIPayload struct {
@@ -37,9 +42,10 @@ type APIResponse struct {
 	} `json:"choices"`
 }
 
-func NewOpenAIService(apiKey string) AIService {
+func NewOpenAIService(apiKey string, client HTTPClient) AIService {
 	return &OpenAIService{
 		APIKey: apiKey,
+		Client: client,
 	}
 }
 
@@ -57,8 +63,7 @@ func (o *OpenAIService) GenerateText(prompt string) (string, error) {
 
 	req, err := createRequest(payloadBytes, o.APIKey)
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
+	resp, err := o.Client.Do(req)
 
 	body, err := io.ReadAll(resp.Body)
 

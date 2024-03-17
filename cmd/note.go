@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/matthewrobinsondev/quicknote-ai/pkg/ai"
@@ -61,7 +62,9 @@ func init() {
 		return
 	}
 
-	aiService = ai.NewOpenAIService(viper.GetString("openai_api_key"))
+	client := &http.Client{}
+
+	aiService = ai.NewOpenAIService(viper.GetString("openai_api_key"), client)
 
 	noteCmd.Flags().StringVarP(&thought, "thought", "t", "", "No thoughts wise guy?")
 	noteCmd.MarkFlagRequired("thought")
