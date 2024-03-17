@@ -10,6 +10,9 @@ Quick note takes the original concept of this & shoots it off into the AI mother
 into your directory of choice.
 
 # Installation
+## Requirements
+`go version 1.22.0`
+
 ## Clone the directory
 `git clone https://github.com/matthewrobinsondev/quicknote-ai`
 
