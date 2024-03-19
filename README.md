@@ -11,7 +11,7 @@ into your directory of choice.
 
 # Installation
 ## Requirements
-`go version 1.22.0`
+`go version 1.22.x`
 
 ## Clone the directory
 `git clone https://github.com/matthewrobinsondev/quicknote-ai`
