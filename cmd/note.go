@@ -11,6 +11,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+var model string
 var thought string
 var aiService ai.AIService
 
@@ -27,12 +28,12 @@ var noteCmd = &cobra.Command{
 	Short: "A brief summary of the note",
 	Long:  "A brief summary of the note which will turn into an obsidian note",
 	Run: func(cmd *cobra.Command, args []string) {
-		content, err := aiService.GenerateText(thought)
+		content, err := aiService.GenerateText(thought, model)
 		if err != nil {
 			return
 		}
 
-		fmt.Println(`Note Created:
+		fmt.Println(`Creating Note:
 `, content)
 		markdown.SaveMarkdown(thought, content)
 	},
@@ -68,5 +69,8 @@ func init() {
 
 	noteCmd.Flags().StringVarP(&thought, "thought", "t", "", "No thoughts wise guy?")
 	noteCmd.MarkFlagRequired("thought")
+
+	noteCmd.Flags().StringVarP(&model, "model", "m", "gpt-3.5-turbo", "Fancy a specific model?")
+
 	rootCmd.AddCommand(noteCmd)
 }

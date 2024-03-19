@@ -1,5 +1,5 @@
 package ai
 
 type AIService interface {
-	GenerateText(prompt string) (string, error)
+	GenerateText(prompt string, model string) (string, error)
 }

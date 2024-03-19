@@ -49,10 +49,10 @@ func NewOpenAIService(apiKey string, client HTTPClient) AIService {
 	}
 }
 
-func (o *OpenAIService) GenerateText(prompt string) (string, error) {
+func (o *OpenAIService) GenerateText(prompt string, model string) (string, error) {
 	fmt.Println("Generating text with OpenAI:", prompt)
 
-	payload := getPayload(prompt)
+	payload := getPayload(prompt, model)
 
 	payloadBytes, err := json.Marshal(payload)
 
@@ -94,9 +94,9 @@ func createRequest(payloadBytes []byte, apiKey string) (*http.Request, error) {
 	return req, nil
 }
 
-func getPayload(prompt string) APIPayload {
+func getPayload(prompt string, model string) APIPayload {
 	return APIPayload{
-		Model: "gpt-3.5-turbo",
+		Model: model,
 		Messages: []Message{
 			{
 				Role:    "system",
